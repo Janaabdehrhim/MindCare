@@ -1,0 +1,55 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\AvailabilitySlot;
+use Illuminate\Http\Request;
+
+class AvailabilitySlotsController extends Controller
+{
+    public function index()
+    {
+        /** @var \App\Models\Therapist $therapist */
+        $therapist = auth()->guard('therapist')->user();
+
+        $slots = AvailabilitySlot::query()->where('therapist_id', $therapist->id)
+            ->orderBy('start_time')
+            ->get();
+
+        return view('therapist.slots', compact('slots'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'start_time' => ['required', 'date', 'after:now'],
+            'end_time'   => ['required', 'date', 'after:start_time'],
+        ]);
+
+        /** @var \App\Models\Therapist $therapist */
+        $therapist = auth()->guard('therapist')->user();
+
+        AvailabilitySlot::query()->create([
+            'therapist_id' => $therapist->id,
+            'start_time'   => $request->start_time,
+            'end_time'     => $request->end_time,
+            'status'       => 'available',
+        ]);
+
+        return redirect()->back()->with('success', 'Slot added.');
+    }
+
+    public function destroy(AvailabilitySlot $availabilitySlot)
+    {
+        /** @var \App\Models\Therapist $therapist */
+        $therapist = auth()->guard('therapist')->user();
+
+        if ($availabilitySlot->therapist_id !== $therapist->id) {
+            abort(403);
+        }
+
+        $availabilitySlot->delete($availabilitySlot->id);
+
+        return redirect()->back()->with('success', 'Slot removed.');
+    }
+}

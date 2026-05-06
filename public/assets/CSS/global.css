@@ -1,0 +1,40 @@
+:root {
+    --main-color: rgb(93, 118, 139);
+    --main2-color: rgb(200, 179, 155);
+    --light-color: #F8EFE5;
+    --dark-color: rgb(35, 58, 78);
+    --text-muted-c: rgb(122, 143, 158);
+    --offWight-color: rgb(248, 246, 243);
+    --border-light: rgba(93, 118, 139, 0.12);
+    --shadow-soft: 0 8px 40px rgba(93, 118, 139, 0.10);
+    --transition: 0.4s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "lora", serif;
+    ;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+
+/*                my classes           */
+.text-mental {
+    color: var(--main-color) !important;
+}
+
+.button-mental {
+    background-color: rgb(93, 118, 139) !important;
+}
+
+.scale {
+    transform: scale(1.07);
+    transition-duration: 5s;
+}

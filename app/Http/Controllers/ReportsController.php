@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ReportsController extends Controller
 {
-  
+
     public function index()
     {
         /** @var \App\Models\Therapist $therapist */

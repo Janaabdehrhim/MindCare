@@ -9,7 +9,6 @@ class ComplaintsController extends Controller
 {
     public function index()
     {
-        /** @var \App\Models\Patient $patient */
         $patient = auth()->guard('patient')->user();
 
         $complaints = Complaint::query()->where('patient_id', $patient->id)
@@ -19,14 +18,12 @@ class ComplaintsController extends Controller
         return view('patient.complaints', compact('complaints'));
     }
 
-    // Patient: submit a complaint
     public function store(Request $request)
     {
         $request->validate([
             'description' => ['required', 'string', 'max:2000'],
         ]);
 
-        /** @var \App\Models\Patient $patient */
         $patient = auth()->guard('patient')->user();
 
         Complaint::create([
@@ -35,12 +32,10 @@ class ComplaintsController extends Controller
             'status'      => 'open',
         ]);
 
-        // ✅ أضف الـ redirect بعد الحفظ
         return redirect()->route('patient.complaints.index')
-                        ->with('success', 'تم إرسال الشكوى بنجاح');
+                        ->with('success', 'Success');
     }
 
-    // Admin: list all complaints
     public function adminIndex()
     {
         $complaints = Complaint::with('patient')
@@ -50,7 +45,6 @@ class ComplaintsController extends Controller
         return view('admin.complaints', compact('complaints'));
     }
 
-    // Admin: update complaint status
     public function updateStatus(Request $request, Complaint $complaint)
     {
         $request->validate([

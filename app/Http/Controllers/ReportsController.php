@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 
 class ReportsController extends Controller
 {
-    /**
-     * Therapist: list all reports for their patients.
-     */
+   
     public function index()
     {
         /** @var \App\Models\Therapist $therapist */
@@ -23,9 +21,7 @@ class ReportsController extends Controller
         return view('therapist.reports', compact('reports'));
     }
 
-    /**
-     * Therapist: store a manual report.
-     */
+
     public function store(Request $request)
     {
         /** @var \App\Models\Therapist $therapist */
@@ -53,9 +49,7 @@ class ReportsController extends Controller
         return redirect()->back()->with('success', 'Report created.');
     }
 
-    /**
-     * Therapist: show a single report.
-     */
+
     public function show(Report $report)
     {
         /** @var \App\Models\Therapist $therapist */

@@ -9,9 +9,7 @@ class IntakeAnswerController extends Controller
 {
     public function __construct(private IntakeService $intakeService) {}
 
-    /**
-     * Store intake answers and generate the report.
-     */
+
     public function store(Request $request)
     {
         $request->validate([

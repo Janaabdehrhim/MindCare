@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 
 class PaymentsController extends Controller
 {
-    /**
-     * Show the payment page for a session.
-     */
+ 
     public function show(PatientSession $session)
     {
         /** @var \App\Models\Patient $patient */
@@ -25,9 +23,7 @@ class PaymentsController extends Controller
         return view('patient.payment', compact('session'));
     }
 
-    /**
-     * Process a payment for a session.
-     */
+  
     public function process(Request $request, PatientSession $session)
     {
         /** @var \App\Models\Patient $patient */
@@ -41,7 +37,6 @@ class PaymentsController extends Controller
             'payment_method' => ['required', 'in:credit_card,wallet'],
         ]);
 
-        // Check not already paid
         $paid = Payment::query()->where('session_id', $session->id)
             ->where('status', 'completed')
             ->exists();
@@ -50,7 +45,6 @@ class PaymentsController extends Controller
             return redirect()->back()->with('error', 'This session is already paid.');
         }
 
-        // Wallet payment: check balance
         if ($request->payment_method === 'wallet') {
             $fee = $session->therapist->session_fee;
             if ($patient->wallet < $fee) {

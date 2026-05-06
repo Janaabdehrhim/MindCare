@@ -7,12 +7,10 @@ use Illuminate\Http\Request;
 
 class NotificationsController extends Controller
 {
-    /**
-     * List notifications for the authenticated user (patient or therapist).
-     */
+
     public function index()
     {
-        // Determine guard
+    
         if (auth()->guard('patient')->check()) {
             $userId   = auth()->guard('patient')->id();
             $userType = 'patient';

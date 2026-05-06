@@ -23,9 +23,7 @@ class SessionsController extends Controller
         return view('therapist.sessions', compact('sessions'));
     }
 
-    /**
-     * Therapist: update session notes.
-     */
+
     public function updateNotes(Request $request, PatientSession $session)
     {
         /** @var \App\Models\Therapist $therapist */
@@ -44,9 +42,7 @@ class SessionsController extends Controller
         return redirect()->back()->with('success', 'Notes updated.');
     }
 
-    /**
-     * Therapist: update session status.
-     */
+ 
     public function updateStatus(Request $request, PatientSession $session)
     {
         /** @var \App\Models\Therapist $therapist */
@@ -65,9 +61,7 @@ class SessionsController extends Controller
         return redirect()->back()->with('success', 'Session status updated.');
     }
 
-    /**
-     * Patient: waiting room for a session.
-     */
+  
     public function waitingRoom(PatientSession $session)
     {
         /** @var \App\Models\Patient $patient */

@@ -35,12 +35,10 @@ class ComplaintsController extends Controller
             'status'      => 'open',
         ]);
 
-        // ✅ أضف الـ redirect بعد الحفظ
         return redirect()->route('patient.complaints.index')
-                        ->with('success', 'تم إرسال الشكوى بنجاح');
+                        ->with('success', 'Your complaint has been submitted. We will review it and get back to you shortly.');
     }
 
-    // Admin: list all complaints
     public function adminIndex()
     {
         $complaints = Complaint::with('patient')
@@ -50,7 +48,6 @@ class ComplaintsController extends Controller
         return view('admin.complaints', compact('complaints'));
     }
 
-    // Admin: update complaint status
     public function updateStatus(Request $request, Complaint $complaint)
     {
         $request->validate([

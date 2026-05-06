@@ -8,14 +8,12 @@ use App\Models\IntakeQuestion;
 
 class IntakeQuestionsSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+   
     public function run(): void
     {
     
     $questions = [
-    // ===== STRESS (6 questions) =====
+
     [
         'question_text' => 'How often do you feel stressed?',
         'category' => 'stress',

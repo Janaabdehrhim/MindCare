@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class PaymentsController extends Controller
 {
- 
+
     public function show(PatientSession $session)
     {
         /** @var \App\Models\Patient $patient */
@@ -22,8 +22,6 @@ class PaymentsController extends Controller
 
         return view('patient.payment', compact('session'));
     }
-
-  
     public function process(Request $request, PatientSession $session)
     {
         /** @var \App\Models\Patient $patient */

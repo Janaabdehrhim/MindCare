@@ -22,6 +22,7 @@ class ReportsController extends Controller
     }
 
 
+
     public function store(Request $request)
     {
         /** @var \App\Models\Therapist $therapist */
@@ -48,6 +49,7 @@ class ReportsController extends Controller
 
         return redirect()->back()->with('success', 'Report created.');
     }
+
 
 
     public function show(Report $report)

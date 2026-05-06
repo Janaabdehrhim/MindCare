@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 class IntakeAnswerController extends Controller
 {
     public function __construct(private IntakeService $intakeService) {}
-
     public function store(Request $request)
     {
         $request->validate([
@@ -19,8 +18,6 @@ class IntakeAnswerController extends Controller
 
         /** @var \App\Models\Patient $patient */
         $patient = auth()->guard('patient')->user();
-
-        // Prevent re-submission
         if ($patient->intakeForm) {
             return redirect()->route('patient.matching')
                 ->with('info', 'Intake already submitted.');

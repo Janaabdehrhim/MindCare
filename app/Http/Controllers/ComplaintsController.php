@@ -9,7 +9,6 @@ class ComplaintsController extends Controller
 {
     public function index()
     {
-        /** @var \App\Models\Patient $patient */
         $patient = auth()->guard('patient')->user();
 
         $complaints = Complaint::query()->where('patient_id', $patient->id)
@@ -25,7 +24,6 @@ class ComplaintsController extends Controller
             'description' => ['required', 'string', 'max:2000'],
         ]);
 
-        /** @var \App\Models\Patient $patient */
         $patient = auth()->guard('patient')->user();
 
         Complaint::create([

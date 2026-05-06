@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class IntakeFormController extends Controller
 {
-   
+
     public function show()
     {
         /** @var \App\Models\Patient $patient */

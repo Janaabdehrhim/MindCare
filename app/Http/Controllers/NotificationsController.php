@@ -46,9 +46,7 @@ class NotificationsController extends Controller
         return redirect()->back()->with('success', 'Notification marked as read.');
     }
 
-    /**
-     * Admin: list all notifications.
-     */
+   
     public function adminIndex()
     {
         $notifications = Notification::with(['patient', 'therapist'])

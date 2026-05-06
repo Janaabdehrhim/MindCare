@@ -100,7 +100,6 @@ class BookingController extends Controller
             'status'       => 'pending',
         ]);
 
-        // Mark slot as booked
         $slot->update(['status' => 'booked', 'session_id' => $session->id]);
 
         return response()->json([

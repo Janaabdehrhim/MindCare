@@ -19,7 +19,6 @@ class ComplaintsController extends Controller
         return view('patient.complaints', compact('complaints'));
     }
 
-    // Patient: submit a complaint
     public function store(Request $request)
     {
         $request->validate([

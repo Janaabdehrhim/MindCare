@@ -14,7 +14,7 @@ class TherapistSeeder extends Seeder
     [
         'first_name'     => 'Lina',
         'last_name'      => 'Khaled',
-        'email'          => 'lina@mindcare.com',
+        'email'          => 'linaTherapist@gmail.com',
         'password'       => Hash::make('password123'),
         'specialization' => 'Stress Management',
         'language'       => 'English',
@@ -29,7 +29,7 @@ class TherapistSeeder extends Seeder
     [
         'first_name'     => 'Omar',
         'last_name'      => 'Youssef',
-        'email'          => 'omar@mindcare.com',
+        'email'          => 'omarTherapist@gmail.com',
         'password'       => Hash::make('password123'),
         'specialization' => 'Anxiety & Panic Disorders',
         'language'       => 'Arabic',
@@ -44,7 +44,7 @@ class TherapistSeeder extends Seeder
     [
         'first_name'     => 'Nour',
         'last_name'      => 'Samir',
-        'email'          => 'nour@mindcare.com',
+        'email'          => 'nourTherapist@gmail.com',
         'password'       => Hash::make('password123'),
         'specialization' => 'Sleep Disorders',
         'language'       => 'English',
@@ -59,7 +59,7 @@ class TherapistSeeder extends Seeder
     [
         'first_name'     => 'Yara',
         'last_name'      => 'Adel',
-        'email'          => 'yara@mindcare.com',
+        'email'          => 'yaraTherapist@gmail.com',
         'password'       => Hash::make('password123'),
         'specialization' => 'Depression & Mood Disorders',
         'language'       => 'Arabic',
@@ -74,7 +74,7 @@ class TherapistSeeder extends Seeder
     [
         'first_name'     => 'Karim',
         'last_name'      => 'Mahmoud',
-        'email'          => 'karim@mindcare.com',
+        'email'          => 'karimTherapist@gmail.com',
         'password'       => Hash::make('password123'),
         'specialization' => 'Social & Relationship Therapy',
         'language'       => 'English',
@@ -89,7 +89,7 @@ class TherapistSeeder extends Seeder
     [
         'first_name'     => 'Mariam',
         'last_name'      => 'Fathy',
-        'email'          => 'mariam@mindcare.com',
+        'email'          => 'mariamTherapist@gmail.com',
         'password'       => Hash::make('password123'),
         'specialization' => 'Trauma & PTSD',
         'language'       => 'Arabic',
@@ -104,7 +104,7 @@ class TherapistSeeder extends Seeder
     [
         'first_name'     => 'Hassan',
         'last_name'      => 'Nabil',
-        'email'          => 'hassan@mindcare.com',
+        'email'          => 'hassanTherapist@gmail.com',
         'password'       => Hash::make('password123'),
         'specialization' => 'Behavioral & Lifestyle Therapy',
         'language'       => 'English',
@@ -119,7 +119,7 @@ class TherapistSeeder extends Seeder
     [
         'first_name'     => 'Salma',
         'last_name'      => 'Ibrahim',
-        'email'          => 'salma@mindcare.com',
+        'email'          => 'salmaTherapist@gmail.com',
         'password'       => Hash::make('password123'),
         'specialization' => 'Stress Management',
         'language'       => 'Arabic',
@@ -134,7 +134,7 @@ class TherapistSeeder extends Seeder
     [
         'first_name'     => 'Ali',
         'last_name'      => 'Mostafa',
-        'email'          => 'ali@mindcare.com',
+        'email'          => 'aliTherapist@gmail.com',
         'password'       => Hash::make('password123'),
         'specialization' => 'Sleep Disorders',
         'language'       => 'English',
@@ -149,7 +149,7 @@ class TherapistSeeder extends Seeder
     [
         'first_name'     => 'Dina',
         'last_name'      => 'Wael',
-        'email'          => 'dina@mindcare.com',
+        'email'          => 'dinaTherapist@gmail.com',
         'password'       => Hash::make('password123'),
         'specialization' => 'Anxiety & Panic Disorders',
         'language'       => 'Arabic',

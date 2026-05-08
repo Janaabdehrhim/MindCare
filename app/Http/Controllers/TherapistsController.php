@@ -127,20 +127,20 @@ class TherapistsController extends Controller
             'intakeForm',
         ]);
 
-        return view('therapist.patient-detail', compact('patient', 'therapist'));
+        return view('therapist.reports', compact('patient', 'therapist'));
     }
 
     public function adminDashboard()
     {
-        $totalTherapists  = Therapist::query()->count();
-        $totalPatients    = Patient::query()->count();
-        //----------------------->ethar
-        $totalSessions    = PatientSession::query()->count();
+        $totalTherapists  = Therapist::query()->count('id');
+        $totalPatients    = Patient::query()->count('id');
+        //----------------------->ethar?
+        $totalSessions    = PatientSession::query()->count('id');
         $recentTherapists = Therapist::query()->latest()->take(5)->get();
         $recentSessions = PatientSession::with(['patient', 'therapist'])->latest()->take(5)->get();
 
 
-         return view('admin.dashboard', compact(
+        return view('admin.dashboard', compact(
         'totalTherapists',
         'totalPatients',
         'totalSessions',

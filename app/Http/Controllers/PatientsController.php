@@ -104,7 +104,7 @@ class PatientsController extends Controller
         $patients   = Patient::with('therapist')->latest()->paginate(20);
         $therapists = Therapist::all();
 
-        return view('admin.manageUsers', compact('patients', 'therapists'));
+        return view('admin.users', compact('patients', 'therapists'));
     }
 
     public function destroy(Patient $patient)

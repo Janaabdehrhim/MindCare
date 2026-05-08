@@ -33,7 +33,15 @@ Route::post('/auth/register', [AuthController::class, 'register']);
 // Logout is POST to protect against CSRF-based forced logouts
 Route::post('/auth/logout', [AuthController::class, 'logout'])->name('logout');
 
+Route::middleware('auth')->group(function () {
 
+    // Show intake form
+    Route::get('/intake', [IntakeFormController::class, 'show'])->name('intake.form');
+
+    // Submit intake answers (AJAX POST)
+    Route::post('/intake/submit', [IntakeFormController::class, 'submit'])->name('intake.submit');
+
+});
 // ─────────────────────────────────────────────────────────────────────────────
 // PATIENT ROUTES — protected by auth.patient middleware
 // ─────────────────────────────────────────────────────────────────────────────

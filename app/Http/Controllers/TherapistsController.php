@@ -137,13 +137,17 @@ class TherapistsController extends Controller
         //----------------------->ethar
         $totalSessions    = PatientSession::query()->count();
         $recentTherapists = Therapist::query()->latest()->take(5)->get();
+        $recentSessions = PatientSession::with(['patient', 'therapist'])->latest()->take(5)->get();
 
-        return view('admin.dashboard', compact(
-            'totalTherapists',
-            'totalPatients',
-            'totalSessions',
-            'recentTherapists'
-        ));
+
+         return view('admin.dashboard', compact(
+        'totalTherapists',
+        'totalPatients',
+        'totalSessions',
+        'recentTherapists',
+        'recentSessions' 
+    ));
+
     }
 
     public function adminIndex()
@@ -152,7 +156,6 @@ class TherapistsController extends Controller
         $therapists = Therapist::query()->with('sessions')->latest()->get();
         return view('admin.users', compact('patients', 'therapists'));
     }
-
     public function store(Request $request)
     {
         $validated = $request->validate([

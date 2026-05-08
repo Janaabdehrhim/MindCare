@@ -31,24 +31,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="">
-                                <td>Dr. Laila Hassan</td>
-                                <td>Anxiety</td>
-                                <td>4.5 <i class="fa-solid fa-star star"></i></td>
-                                <td><span class="status confirmed">Available</span></td>
-                            </tr>
-                            <tr class="">
-                                <td>Dr. Mohamed Riad</td>
-                                <td>Stress</td>
-                                <td>4.2 <i class="fa-solid fa-star star"></i></td>
-                                <td><span class="status confirmed">Available</span></td>
-                            </tr>
-                            <tr>
-                                <td>Dr. Noha Khalil</td>
-                                <td>Relationships</td>
-                                <td>4.3 <i class="fa-solid fa-star star"></i></td>
-                                <td><span class="status cancelled">Not Available</span></td>
-                            </tr>
+                            @foreach ($therapists as $therapist)
+                                <tr>
+                                    <td>{{ $therapist->first_name }} {{ $therapist->last_name }}</td>
+                                    <td>{{ $therapist->specialization }}</td>
+                                    <td>
+                                        {{ number_format($therapist->rating, 1) }}
+                                        <i class="fa-solid fa-star star"></i>
+                                    </td>
+                                    <td>
+                                        @if ($therapist->is_available)
+                                            <span class="status confirmed">Available</span>
+                                        @else
+                                            <span class="status cancelled">Not Available</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -68,27 +67,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Ahmed Khaled</td>
-                                <td>20</td>
-                                <td>Dr. Laila Hassan</td>
-                                <td>High</td>
-                                <td><button class="btn">Remove User</button></td>
-                            </tr>
-                            <tr>
-                                <td>Sara Mohamed</td>
-                                <td>34</td>
-                                <td>Dr. Mohamed Riad</td>
-                                <td>Medium</td>
-                                <td><button class="btn">Remove User</button></td>
-                            </tr>
-                            <tr>
-                                <td>Nour Ali</td>
-                                <td>27</td>
-                                <td>Dr. Noha Khalil</td>
-                                <td>Low</td>
-                                <td><button class="btn">Remove User</button></td>
-                            </tr>
+
+
+
+                            @foreach ($patients as $patient)
+                                <tr>
+                                    <td>{{ $patient->first_name }} {{ $patient->last_name }}</td>
+                                    <td>{{ $patient->age }}</td>
+                                    <td>{{ $patient->therapist ? 'Dr. ' . $patient->therapist->first_name . ' ' . $patient->therapist->last_name : 'No Therapist' }}
+                                    </td>
+                                    <td>{{ $patient->condition_level }}</td>
+                                    <td>
+                                        <form action="{{ route('admin.patients.destroy', $patient->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn">Remove User</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+
+
+
                         </tbody>
                     </table>
                 </div>

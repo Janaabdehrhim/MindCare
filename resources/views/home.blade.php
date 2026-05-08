@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindCare</title>
     <link rel="shortcut icon" href="{{ asset('assets/Images/favIcon.png') }}" type="image/x-icon">
-
     <link rel="stylesheet" href="{{ asset('assets/CSS/plugins/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/CSS/plugins/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/CSS/plugins/fonts.css') }}">
@@ -27,7 +26,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navMenu">
                 <ul class="navbar-nav align-items-lg-center">
                     {{-- Guest --}}
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
@@ -41,10 +40,10 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn-nav-cta" href="">Get Started</a>
-                    </li>
+                    </li> --}}
 
                     {{-- Patient --}}
-                    {{-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link active" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
@@ -67,7 +66,7 @@
                                 <li><a class="dropdown-item" href="#">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
                             </ul>
                         </li>
-                    </div> --}}
+                    </div>
 
                     {{-- Therapist --}}
                     {{-- <li class="nav-item">

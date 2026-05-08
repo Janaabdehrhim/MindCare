@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindCare</title>
+    <link rel="shortcut icon" href="{{ asset('assets/Images/favIcon.png') }}" type="image/x-icon">
 
     <link rel="stylesheet" href="{{ asset('assets/CSS/plugins/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/CSS/plugins/bootstrap.min.css') }}">
@@ -18,8 +19,6 @@
 
     <nav id="mainNav" class="navbar navbar-expand-lg">
         <div class="container">
-
-
             <a class="navbar-brand" href="#home">mind<span>Care</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
                 aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,16 +26,92 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navMenu">
                 <ul class="navbar-nav align-items-lg-center">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#c">Contact</a></li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-nav-cta" href="#contact">Book a Session</a>
+                    {{-- Guest --}}
+                    {{-- <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-nav-cta" href="">Get Started</a>
+                    </li> --}}
+
+                    {{-- Patient --}}
+                    {{-- <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Wellness</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Matched Therapists</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Book Session</a>
+                    </li>
+                    <div class="d-flex">
+                        <li class="nav-item">
+                            <div class="nav-link btn-nav-cta" onclick="openPopUp('notifications')"><i class="fa-solid fa-bell"></i></div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link btn-nav-cta dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Maryam <i class="fa-solid fa-user"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+                            </ul>
+                        </li>
+                    </div> --}}
+
+                    {{-- Therapist --}}
+                    {{-- <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Patients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Sessions</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link btn-nav-cta" onclick="openPopUp('notifications')"><i class="fa-solid fa-bell"></i></div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link btn-nav-cta dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Maryam <i class="fa-solid fa-user"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+                        </ul>
+                    </li> --}}
+
+                    {{-- Admin --}}
+                    {{-- <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">User Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link btn-nav-cta" onclick="openPopUp('notifications')"><i class="fa-solid fa-bell"></i></div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link btn-nav-cta dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Maryam <i class="fa-solid fa-user"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+                        </ul>
+                    </li>--}}
                 </ul>
             </div>
-
         </div>
     </nav>
 
@@ -155,8 +230,7 @@
         </div>
         <div class="two">
             <div class="boxes row">
-                <div class="box col-xl-2 col-md-4 col-8" data-aos="fade-up" data-aos-duration="5000"
-                    data-aos-delay="500">
+                <div class="box col-xl-2 col-md-4 col-8" data-aos="fade-up" data-aos-duration="600" data-aos-delay="500">
                     <div class="icon">
                         <i class="fa-regular fa-comment-dots"></i>
                     </div>
@@ -164,7 +238,7 @@
                     <p>Connect with a licensed therapist from the comfort of your home via video, voice, or chat
                         sessions.</p>
                 </div>
-                <div class="box col-xl-2 col-md-4 col-8" data-aos="fade-up" data-aos-duration="5000"
+                <div class="box col-xl-2 col-md-4 col-8" data-aos="fade-up" data-aos-duration="600"
                     data-aos-delay="600">
                     <div class="icon">
                         <i class="fa-solid fa-chart-column"></i>
@@ -173,7 +247,7 @@
                     <p>Daily check-ins and mood analytics to help you and your therapist understand your emotional
                         patterns.</p>
                 </div>
-                <div class="box col-xl-2 col-md-4 col-8" data-aos="fade-up" data-aos-duration="5000"
+                <div class="box col-xl-2 col-md-4 col-8" data-aos="fade-up" data-aos-duration="600"
                     data-aos-delay="700">
                     <div class="icon">
                         <i class="fa-regular fa-clipboard"></i>
@@ -181,7 +255,7 @@
                     <h5>Intake Assessment</h5>
                     <p>A thorough, compassionate evaluation to match you with the right therapist and care approach.</p>
                 </div>
-                <div class="box col-xl-2 col-md-4 col-8" data-aos="fade-up" data-aos-duration="5000"
+                <div class="box col-xl-2 col-md-4 col-8" data-aos="fade-up" data-aos-duration="600"
                     data-aos-delay="800">
                     <div class="icon">
                         <i class="fa-regular fa-heart"></i>
@@ -278,6 +352,13 @@
 
         </div>
     </footer>
+
+    <div class="popUp list notifications" onclick="closePopUp()">
+        <div class="box">
+            <i class="fa-solid fa-xmark close" onclick="closePopUp()"></i>
+            <h2 class="title">Notifications</h2>
+        </div>
+    </div>
 
     <div class="loadingPage">
         <div class="loader"></div>

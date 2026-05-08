@@ -114,7 +114,7 @@
         </div>
     </div>
 
-    <div class="popUp list">
+    <div class="popUp list" onclick="closePopUp()">
         <div class="box">
             <i class="fa-solid fa-xmark close" onclick="closePopUp()"></i>
             <h2 class="title">Patient List</h2>
@@ -141,7 +141,6 @@
 
     <script src="{{ asset('assets/JS/plugins/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/JS/plugins/jQuery.js') }}"></script>
-    <script src="{{ asset('assets/JS/therapist.js') }}"></script>
     <script src="{{ asset('assets/JS/global.js') }}"></script>
 
 </body>

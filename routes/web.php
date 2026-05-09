@@ -121,6 +121,7 @@ Route::middleware(['auth.therapist'])
         // ── Notifications ─────────────────────────────────────────────────────────
         Route::get('/notifications', [NotificationsController::class, 'index'])->name('notifications');
         Route::patch('/notifications/{id}/read', [NotificationsController::class, 'markRead'])->name('notifications.read');
+        Route::get('/therapist/sessions/{session}', [SessionsController::class, 'show'])->name('therapist.session.room');
     });
 
 // ─────────────────────────────────────────────────────────────────────────────

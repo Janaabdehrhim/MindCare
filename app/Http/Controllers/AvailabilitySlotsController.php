@@ -12,8 +12,8 @@ class AvailabilitySlotsController extends Controller
         /** @var \App\Models\Therapist $therapist */
         $therapist = auth()->guard('therapist')->user();
 
-        $slots = AvailabilitySlot::query()->where('therapist_id', $therapist->id)
-            ->query()->orderBy('start_time')
+        $slots = AvailabilitySlot::where('therapist_id', $therapist->id)
+            ->orderBy('start_time')
             ->get();
 
         return view('therapist.slots', compact('slots'));

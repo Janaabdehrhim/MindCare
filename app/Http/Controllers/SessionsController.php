@@ -74,7 +74,7 @@ class SessionsController extends Controller
 
         $session->load('therapist');
 
-        return view('patient.waiting-room', compact('session'));
+        return view('patient.waitingRoom', compact('session'));
     }
     public function sendMessage(Request $request, $sessionId)
     {

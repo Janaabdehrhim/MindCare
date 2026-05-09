@@ -119,11 +119,11 @@ class TherapistsController extends Controller
 
     public function adminDashboard()
     {
-        $totalTherapists  = Therapist::query()->count('id');
-        $totalPatients    = Patient::query()->count('id');
+        $totalTherapists  = Therapist::count('id');
+        $totalPatients    = Patient::count('id');
         //----------------------->ethar?
-        $totalSessions    = PatientSession::query()->count('id');
-        $recentTherapists = Therapist::query()->latest()->take(5)->get();
+        $totalSessions    = PatientSession::count('id');
+        $recentTherapists = Therapist::latest()->take(5)->get();
         $recentSessions = PatientSession::with(['patient', 'therapist'])->latest()->take(5)->get();
 
 

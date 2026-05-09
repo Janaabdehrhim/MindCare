@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class PatientSession extends Model
 {
     protected $table = 'patient_sessions';
-
+    protected $casts = [
+        'session_time' => 'datetime',
+    ];
     protected $fillable = [
         'therapist_id', 'patient_id', 'session_time',
         'notes', 'status', 'rating'

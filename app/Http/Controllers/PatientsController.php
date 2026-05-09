@@ -103,7 +103,9 @@ class PatientsController extends Controller
 
     public function adminIndex()
     {
-        $patients = Patient::with('therapist')->latest()->paginate(20);
+        $patients = Patient::with(['therapist', 'sessions'])
+        ->latest()
+        ->paginate(20);
         $therapists = Therapist::all();
 
         return view('admin.users', compact('patients', 'therapists'));

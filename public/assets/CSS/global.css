@@ -11,6 +11,7 @@ body {
     background-color: #F8EFE5;
     font-family: "Roboto", sans-serif;
 }
+
 body::-webkit-scrollbar {
     background: rgb(35, 58, 78);
     width: 13px;
@@ -34,6 +35,7 @@ body::-webkit-scrollbar-thumb {
     height: 100%;
     background-color: #f8efe5;
 }
+
 .loadingPage .loader {
     --d: 38px;
     width: 10px;
@@ -43,8 +45,87 @@ body::-webkit-scrollbar-thumb {
     box-shadow: calc(1 * var(--d)) calc(0 * var(--d)) 0 0, calc(0.707 * var(--d)) calc(0.707 * var(--d)) 0 1px, calc(0 * var(--d)) calc(1 * var(--d)) 0 2px, calc(-0.707 * var(--d)) calc(0.707 * var(--d)) 0 3px, calc(-1 * var(--d)) calc(0 * var(--d)) 0 4px, calc(-0.707 * var(--d)) calc(-0.707 * var(--d)) 0 5px, calc(0 * var(--d)) calc(-1 * var(--d)) 0 6px;
     animation: l27 1s infinite steps(8);
 }
+
 @keyframes l27 {
     100% {
         transform: rotate(1turn);
     }
+}
+
+.popUp.notifications {
+    position: fixed;
+    top: 0;
+    right: initial;
+    bottom: initial;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    overflow: auto;
+    display: none;
+}
+
+.popUp.notifications .box {
+    background-color: #FDFCFA;
+    background-color: rgba(93, 118, 139, 0.7333333333);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    width: 350px;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    color: #FDFCFA;
+}
+
+@media (max-width: 1300px) {
+    .popUp.notifications .box {
+        width: 280px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 1300px) {
+    .popUp.notifications .box {
+        width: 350px;
+    }
+}
+
+.popUp.notifications .box i.close {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    bottom: initial;
+    left: initial;
+    z-index: initial;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.popUp.notifications .box .title {
+    text-align: center;
+    margin-block: 8px 25px;
+    text-shadow: #d9f3f2 1px 0 10px;
+}
+
+.popUp.notifications .box .patient i {
+    color: #efd6ba;
+    margin-right: 8px;
+}
+
+.popUp.notifications .box .patient h4 {
+    margin-block: 5px;
+    font-style: italic;
+}
+
+.popUp.notifications .box .patient p {
+    color: #d2d2d2;
+}
+
+.popUp.notifications .box hr {
+    color: #fff;
 }

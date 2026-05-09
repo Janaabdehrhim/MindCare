@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindCare</title>
+    <link rel="shortcut icon" href="{{ asset('assets/Images/favIcon.png') }}" type="image/x-icon">
 
     <link rel="stylesheet" href="{{ asset('assets/CSS/plugins/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/CSS/plugins/bootstrap.min.css') }}">
@@ -13,7 +14,7 @@
 </head>
 
 <body>
-
+    @include('shared.nav')
     <div class="adminDashboard pt-5">
         <div class="container">
             <h2 class="title mb-5 fs-1">Admin Dashboard</h2>

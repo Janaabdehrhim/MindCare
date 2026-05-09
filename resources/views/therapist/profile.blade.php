@@ -13,7 +13,7 @@
 </head>
 
 <body>
-
+   @include('shared.nav')
     <div class="profile my-5 pt-5">
         <div class="container">
             <div class="row">

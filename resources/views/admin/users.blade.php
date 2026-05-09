@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindCare</title>
+    <link rel="shortcut icon" href="{{ asset('assets/Images/favIcon.png') }}" type="image/x-icon">
 
     <link rel="stylesheet" href="{{ asset('assets/CSS/plugins/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/CSS/plugins/bootstrap.min.css') }}">
@@ -14,7 +15,7 @@
 
 <body>
 
-
+    @include('shared.nav')
     <div class="adminDashboard pt-5">
         <div class="container">
             <h2 class="title mb-5 fs-1">Therapist Management</h2>
@@ -28,6 +29,7 @@
                                 <th>SPECIALIZATION</th>
                                 <th>RATE</th>
                                 <th>AVAILABILITY</th>
+                                <th>ACTIONS</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,6 +48,7 @@
                                             <span class="status cancelled">Not Available</span>
                                         @endif
                                     </td>
+                                    <td><button class="btn remove">Remove User</button></td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -64,12 +67,10 @@
                                 <th>ASSIGNED THERAPIST</th>
                                 <th>CONDITION LEVEL</th>
                                 <th>ACTIONS</th>
+                                <th>COMPLAINT</th>
                             </tr>
                         </thead>
                         <tbody>
-
-
-
                             @foreach ($patients as $patient)
                                 <tr>
                                     <td>{{ $patient->first_name }} {{ $patient->last_name }}</td>
@@ -78,21 +79,29 @@
                                     </td>
                                     <td>{{ $patient->condition_level }}</td>
                                     <td>
-                                        <form action="{{ route('admin.patients.destroy', $patient->id) }}"
+                                        <form action="{{ route('admin.patient.destroy', $patient->id) }}"
                                             method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn">Remove User</button>
                                         </form>
                                     </td>
+                                    <td><button class="btn view" onclick="openPopUp('list')">View</button></td>
                                 </tr>
                             @endforeach
-
-
-
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popUp list">
+        <div class="box">
+            <i class="fa-solid fa-xmark close" onclick="closePopUp()"></i>
+            <h2 class="title mb-4">Complaint</h2>
+            <div class="patient">
+                <h4 class="mb-2"><i class="fa-solid fa-circle-dot"></i>asjcbj achbauc uacbyh uj</h4>
             </div>
         </div>
     </div>

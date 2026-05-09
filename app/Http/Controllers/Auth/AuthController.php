@@ -37,72 +37,155 @@ class AuthController extends Controller
     {
         $request->validate(
             [
+<<<<<<< HEAD
                 'email' => ['required', 'email', 'regex:/^[A-Za-z0-9._%-]+@(gmail|yahoo)\.com$/'],
 
                 'password' => ['required', 'string', 'min:8', 'max:20', 'regex:/^[A-Za-z0-9]+$/'],
+=======
+                'email' => [
+                    'required',
+                    'email',
+                    'regex:/^[A-Za-z0-9._%-]+@(gmail|yahoo)\.com$/'
+                ],
+
+                'password' => [
+                    'required',
+                    'string',
+                    'min:8',
+                    'max:20',
+                    'regex:/^[A-Za-z0-9]+$/'
+                ],
+>>>>>>> a0ab0a54b02c9b1029c97517d4e84c7970b369b0
             ],
             [
                 'email.regex' => 'Only Gmail and Yahoo email addresses are accepted.',
                 'password.min' => 'Password must be at least 8 characters.',
                 'password.max' => 'Password must not exceed 20 characters.',
                 'password.regex' => 'Password may only contain letters and numbers.',
-            ],
+            ]
         );
 
         $credentials = $request->only('email', 'password');
 
         // Patient Login
         if (Auth::guard('patient')->attempt($credentials)) {
+
             $request->session()->regenerate();
 
+<<<<<<< HEAD
             return $this->successResponse($request, route('patient.intake'));
+=======
+            return $this->successResponse(
+                $request,
+                route('patient.intake')
+            );
+>>>>>>> a0ab0a54b02c9b1029c97517d4e84c7970b369b0
         }
 
         // Therapist Login
         if (Auth::guard('therapist')->attempt($credentials)) {
+<<<<<<< HEAD
             $request->session()->regenerate();
 
             return $this->successResponse($request, route('therapist.profile'));
+=======
+
+            $request->session()->regenerate();
+
+            return $this->successResponse(
+                $request,
+                route('therapist.profile')
+            );
+>>>>>>> a0ab0a54b02c9b1029c97517d4e84c7970b369b0
         }
 
         // Admin Login
         if ($this->attemptAdmin($request->email, $request->password)) {
+
             $request->session()->regenerate();
 
             session([
+<<<<<<< HEAD
                 'admin_logged_in' => true,
             ]);
 
             return $this->successResponse($request, route('admin.dashboard'));
+=======
+                'admin_logged_in' => true
+            ]);
+
+            return $this->successResponse(
+                $request,
+                route('admin.dashboard')
+            );
+>>>>>>> a0ab0a54b02c9b1029c97517d4e84c7970b369b0
         }
 
-        return $this->failResponse($request, 'No account found with these credentials.');
+        return $this->failResponse(
+            $request,
+            'No account found with these credentials.'
+        );
     }
 
     private function attemptAdmin(string $email, string $password): bool
     {
-        if (empty(config('admin.email')) || empty(config('admin.password'))) {
+        if (
+            empty(config('admin.email')) ||
+            empty(config('admin.password'))
+        ) {
             return false;
         }
 
-        return $email === config('admin.email') && Hash::check($password, config('admin.password'));
+        return
+            $email === config('admin.email') &&
+            Hash::check($password, config('admin.password'));
     }
 
     public function register(Request $request)
     {
         $request->validate(
             [
-                'first_name' => ['required', 'string', 'max:255', 'regex:/^[A-Za-z]+$/'],
+                'first_name' => [
+                    'required',
+                    'string',
+                    'max:255',
+                    'regex:/^[A-Za-z]+$/'
+                ],
 
-                'last_name' => ['required', 'string', 'max:255', 'regex:/^[A-Za-z]+$/'],
+                'last_name' => [
+                    'required',
+                    'string',
+                    'max:255',
+                    'regex:/^[A-Za-z]+$/'
+                ],
 
-                'email' => ['required', 'email', 'unique:patients,email', 'regex:/^[A-Za-z0-9._%-]+@(gmail|yahoo)\.com$/'],
+                'email' => [
+                    'required',
+                    'email',
+                    'unique:patients,email',
+                    'regex:/^[A-Za-z0-9._%-]+@(gmail|yahoo)\.com$/'
+                ],
 
-                'password' => ['required', 'string', 'min:8', 'max:20', 'confirmed', 'regex:/^[A-Za-z0-9]+$/'],
+                'password' => [
+                    'required',
+                    'string',
+                    'min:8',
+                    'max:20',
+                    'confirmed',
+                    'regex:/^[A-Za-z0-9]+$/'
+                ],
 
-                'age' => ['required', 'integer', 'min:10', 'max:120'],
+                'age' => [
+                    'required',
+                    'integer',
+                    'min:10',
+                    'max:120'
+                ],
 
-                'gender' => ['required', 'in:male,female'],
+                'gender' => [
+                    'required',
+                    'in:male,female'
+                ],
             ],
             [
                 'first_name.regex' => 'First name may only contain letters.',
@@ -115,7 +198,7 @@ class AuthController extends Controller
                 'password.confirmed' => 'Passwords do not match.',
                 'age.min' => 'You must be at least 10 years old to register.',
                 'gender.in' => 'Gender must be male or female.',
-            ],
+            ]
         );
 
         $patient = Patient::create([
@@ -127,10 +210,25 @@ class AuthController extends Controller
             'gender' => $request->gender,
         ]);
 
+<<<<<<< HEAD
         // Do NOT log in automatically after registration.
         // Redirect to login so the patient authenticates explicitly,
         // then the login flow will send them to the intake form.
         return redirect()->route('login')->with('success', 'Account created successfully! Please sign in to continue.');
+=======
+        // Login after registration
+        Auth::guard('patient')->login($patient);
+
+        // Regenerate session
+        $request->session()->regenerate();
+
+        return redirect()
+            ->route('patient.intake')
+            ->with(
+                'success',
+                'Registration successful!'
+            );
+>>>>>>> a0ab0a54b02c9b1029c97517d4e84c7970b369b0
     }
 
     public function logout(Request $request)
@@ -149,35 +247,54 @@ class AuthController extends Controller
         return redirect()->route('login');
     }
 
-    private function successResponse(Request $request, string $redirectUrl)
-    {
+    private function successResponse(
+        Request $request,
+        string $redirectUrl
+    ) {
         if ($request->expectsJson()) {
+<<<<<<< HEAD
             return response()->json([
                 'redirect' => $redirectUrl,
+=======
+
+            return response()->json([
+                'redirect' => $redirectUrl
+>>>>>>> a0ab0a54b02c9b1029c97517d4e84c7970b369b0
             ]);
         }
 
         return redirect($redirectUrl);
     }
 
-    private function failResponse(Request $request, string $message)
-    {
+    private function failResponse(
+        Request $request,
+        string $message
+    ) {
         if ($request->expectsJson()) {
+
             return response()->json(
                 [
                     'message' => $message,
 
                     'errors' => [
+<<<<<<< HEAD
                         'email' => [$message],
+=======
+                        'email' => [$message]
+>>>>>>> a0ab0a54b02c9b1029c97517d4e84c7970b369b0
                     ],
                 ],
-                422,
+                422
             );
         }
 
         return back()
             ->withErrors([
+<<<<<<< HEAD
                 'email' => $message,
+=======
+                'email' => $message
+>>>>>>> a0ab0a54b02c9b1029c97517d4e84c7970b369b0
             ])
             ->withInput();
     }

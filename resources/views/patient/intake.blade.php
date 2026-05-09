@@ -87,9 +87,7 @@
 
     {{-- Pass the submit URL to JS --}}
     <script>
-    // intake.submit is now under the patient-prefix group (auth.patient guard)
-    // so the patient session cookie is sent and recognised on the backend.
-    let INTAKE_SUBMIT_URL = "{{ route('patient.intake.submit') }}";
+    let INTAKE_SUBMIT_URL = "{{ route('intake.submit') }}";
     </script>
 
     <script src="{{ asset('assets/JS/plugins/bootstrap.min.js') }}"></script>

@@ -7,15 +7,13 @@ use Illuminate\Http\Request;
 
 class ComplaintsController extends Controller
 {
-    public function index()
+    public function adminIndex()
     {
         $patient = auth()->guard('patient')->user();
 
-        $complaints = Complaint::where('patient_id', $patient->id)
-            ->orderByDesc('created_at')
-            ->get();
+        $complaints = Complaint::with('patient')->orderByDesc('created_at')->get();
 
-        return view('patient.complaints', compact('complaints'));
+        return view('admin.users.complaints', compact('complaints'));
     }
 
     public function store(Request $request)
@@ -27,22 +25,12 @@ class ComplaintsController extends Controller
         $patient = auth()->guard('patient')->user();
 
         Complaint::create([
-            'patient_id'  => $patient->id,
+            'patient_id' => $patient->id,
             'description' => $request->description,
-            'status'      => 'open',
+            'status' => 'open',
         ]);
 
-        return redirect()->route('patient.complaints.index')
-                        ->with('success', 'Your complaint has been submitted. We will review it and get back to you shortly.');
-    }
-
-    public function adminIndex()
-    {
-        $complaints = Complaint::with('patient')
-            ->orderByDesc('created_at')
-            ->get();
-
-        return view('admin.complaints', compact('complaints'));
+        return redirect()->route('patient.complaints')->with('success', 'Your complaint has been submitted. We will review it and get back to you shortly.');
     }
 
     public function updateStatus(Request $request, Complaint $complaint)

@@ -78,12 +78,12 @@ Route::middleware(['auth.patient'])
         // ── Chart data (AJAX) ──────────────────────────────────────────────────
         Route::get('/wellness/chart', [WellnessRecordsController::class, 'chartData'])->name('wellness.chart');
         // ── Complaints ────────────────────────────────────────────────────────────
-        Route::get('/complaints', [ComplaintsController::class, 'index'])->name('complaints');
-        Route::post('/complaints', [ComplaintsController::class, 'store'])->name('complaints.store');
+        Route::get('/complaints', [ComplaintsController::class, 'index'])->name('users.complaints');
+        Route::post('/complaints', [ComplaintsController::class, 'store'])->name('users.complaints.store');
 
         // ── Notifications ─────────────────────────────────────────────────────────
-        Route::get('/notifications', [NotificationsController::class, 'index'])->name('notifications');
-        Route::patch('/notifications/{id}/read', [NotificationsController::class, 'markRead'])->name('notifications.read');
+        Route::get('/notifications', [NotificationsController::class, 'index'])->name('users.notifications');
+        Route::patch('/notifications/{id}/read', [NotificationsController::class, 'markRead'])->name('users.notifications.read');
     });
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -141,8 +141,8 @@ Route::middleware(['auth.admin'])
         Route::delete('/users/therapist/{therapist}', [TherapistsController::class, 'destroy'])->name('therapist.destroy');
 
         // ── Complaints ────────────────────────────────────────────────────────────
-        Route::get('/complaints', [ComplaintsController::class, 'adminIndex'])->name('complaints');
-        Route::patch('/complaints/{complaint}', [ComplaintsController::class, 'updateStatus'])->name('complaints.update');
+        Route::get('/complaints', [ComplaintsController::class, 'adminIndex'])->name('users.complaints');
+        Route::patch('/complaints/{complaint}', [ComplaintsController::class, 'updateStatus'])->name('users.complaints.update');
 
         // ── Notifications ─────────────────────────────────────────────────────────
         Route::get('/notifications', [NotificationsController::class, 'adminIndex'])->name('notifications');

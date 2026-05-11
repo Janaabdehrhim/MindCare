@@ -14,6 +14,7 @@
 
 <body>
 
+<<<<<<< HEAD
 @include('shared.nav')
 
 <header class="hdr">
@@ -26,6 +27,13 @@
                 {{ $session->patient?->last_name }}
                 </span>
             </h2>
+=======
+    <header class="hdr">
+        <div class="d-flex align-items-center gap-3">
+            <div class="hdr-info">
+                <h2>Session with <span id="patient-name">Sara Ahmed</span></h2>
+            </div>
+>>>>>>> 269aae40ea49df44f6993ad35589eb8a16963514
         </div>
     </div>
 

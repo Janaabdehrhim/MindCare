@@ -48,8 +48,8 @@
                                             <span class="status cancelled">Not Available</span>
                                         @endif
                                     </td>
-                                    <td> 
-                                        <form action="{{ route('admin.therapist.destroy',$therapist->id) }}"
+                                    <td>
+                                        <form action="{{ route('admin.therapist.destroy', $therapist->id) }}"
                                             method="POST">
                                             @csrf
                                             @method('DELETE')
@@ -94,9 +94,7 @@
                                         </form>
                                     </td>
                                     <td><button class="btn view" onclick="openPopUp('list')">View</button></td>
-                                    
                                 </tr>
-                                
                             @endforeach
                         </tbody>
                     </table>
@@ -105,22 +103,16 @@
         </div>
     </div>
 
-    <div class="popUp list">
-        <div class="box">
-            <i class="fa-solid fa-xmark close" onclick="closePopUp()"></i>
-            <h2 class="title mb-4">Complaint</h2>
-            <div class="patient">
-                @if ($complaint && $complaint->description)
-                    <h4 class="mb-2">
-                        <i class="fa-solid fa-circle-dot"></i>
-                        {{ $complaint->description }}
-                    </h4>
-                @else
-                    <h4 class="mb-2">No Complaints</h4>
-                @endif
-            </div>
-        </div>
-    </div>
+    @if ($complaints->isEmpty())
+        <h4 class="mb-2 text-muted">No complaints</h4>
+    @else
+        @foreach ($complaints as $complaint)
+            <h4 class="mb-2">
+                <i class="fa-solid fa-circle-dot"></i>
+                {{ $complaint->description }}
+            </h4>
+        @endforeach
+    @endif
     <div class="loadingPage">
         <div class="loader"></div>
     </div>
